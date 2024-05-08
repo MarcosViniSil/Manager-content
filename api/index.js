@@ -1,14 +1,20 @@
-import { createClient } from "@supabase/supabase-js";
+import express from "express";
 import dotenv from "dotenv";
-
+import cors  from 'cors'
+import userController from './controller/manipulationContent.js';
 
 dotenv.config();
 
-const supabaseUrl = process.env.URL;
-const supabaseAnonKey = process.env.TOKEN;
-console.log(supabaseUrl)
-console.log(supabaseAnonKey)
+const app = express();
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+app.use(cors({ origin: true }));
 
-export default supabase
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const PORT = process.env.PORT || 3000;
+app.use('/', userController);
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
