@@ -1,4 +1,4 @@
-# Documentação api que gerencia conteúdo de página estáticas
+# Documentação api que gerencia conteúdo de páginas estáticas
 
 ## EndPoints
  - 1 - `/validate/adm`
@@ -15,7 +15,7 @@
   - ### password: string
 
 ### Resposta:
-  - ### `id` do `adm`  se existir, caso contrário retorna a mensagem `erro`
+  - ### `id` do `adm`  se existir, caso contrário, retorna a mensagem `erro`
 
 ## 2 - `/contents/adm`
 ### Este endpoint retorna todos os conteúdos de uma determinada página que um `adm` tem acesso.
