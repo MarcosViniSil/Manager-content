@@ -12,14 +12,12 @@ const projectsUser = async (req, res) => {
     if (userError) {
       throw new Error("Erro ao buscar dados do usuário");
     }
-
-
     if (userData && userData.length > 0) {
       const userId = parseInt(userData[0].id.toString());
 
       const { data: userContents, error: contentError } = await supabase
-        .from("adm_field")
-        .select("id_field")
+        .from("field")
+        .select("id,content")
         .eq("id_adm", userId);
 
       if (contentError) {
@@ -27,8 +25,8 @@ const projectsUser = async (req, res) => {
       }
 
       if (userContents && userContents.length > 0) {
-        const idFields = userContents.map(content => content.id_field);
-        res.send(idFields);
+        const sortedContents = userContents.sort((a, b) => a.id - b.id);
+        res.send(sortedContents);
       } else {
         res.send("Nenhum conteúdo encontrado para este usuário");
       }
