@@ -1,5 +1,5 @@
 import express from "express";
-import projectsUser from "../services/addContentADM.js";
+import projectsUser from "../services/getIdAdm.js";
 import fetchContents from "../services/fetchContentsAdm.js";
 import updateContent from "../services/updateContent.js";
 import fetchContent from "../services/fetchContent.js";
