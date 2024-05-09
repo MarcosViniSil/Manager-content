@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 3000;
 app.use('/', userController);
-app.get('/', (req, res) => {
+app.get('/documentation', (req, res) => {
 
   fs.readFile('./documentation.html', 'utf8', (err, data) => {  
     res.send(data);
