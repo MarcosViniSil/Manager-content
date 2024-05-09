@@ -5,6 +5,8 @@
  - 2 - `/contents/adm`
  - 3 - `/update/content`
  - 4 - `/content/id`
+ - 5 - `/encrypt/password`
+ - 6 - `/decrypt/password`
 ## OBS: todos os endpoints são do tipo `POST`
 ## Explicação de cada endpoint:
 ## 1 - `/validate/adm`
@@ -65,3 +67,22 @@
 
 ### Exemplo de resposta
 - ### `novo texto`
+
+## 4 - `/encrypt/password`
+### Este endpoint tem como objetivo criptografar uma senha
+
+### Body da requisição:
+- ### password: string
+
+### Resposta:
+- ### senha cryptografada
+
+## 4 - `/decrypt/password`
+### Este endpoint tem como objetivo descriptografar uma senha
+
+### Body da requisição:
+- ### code: string
+
+### Resposta:
+- ### senha original
+
