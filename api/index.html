@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação da API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #444;
+        }
+        p {
+            color: #666;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        #wrapAll{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="wrapAll">
+        <h1>Documentação da API que Gerencia Conteúdo de Páginas Estáticas</h1>
+        <h2>Endpoints</h2>
+        <ul>
+            <li>1 - <code>/validate/adm</code></li>
+            <li>2 - <code>/contents/adm</code></li>
+            <li>3 - <code>/update/content</code></li>
+            <li>4 - <code>/content/id</code></li>
+            <li>5 - <code>/encrypt/password</code></li>
+            <li>6 - <code>/decrypt/password</code></li>
+        </ul>
+        <h2>Explicação de cada endpoint:</h2>
+        <h3>1 - <code>/validate/adm</code></h3>
+        <p>Este endpoint tem como objetivo validar um determinado administrador (`adm`), aquele que pode alterar o conteúdo das páginas.</p>
+        <h4>Body da requisição:</h4>
+        <ul>
+            <li><code>email: string</code></li>
+            <li><code>password: string</code></li>
+        </ul>
+        <h4>Resposta:</h4>
+        <p><code>id</code> do <code>adm</code> se existir, caso contrário, retorna a mensagem <code>erro</code></p>
+        <h3>2 - <code>/contents/adm</code></h3>
+        <p>Este endpoint retorna todos os conteúdos de uma determinada página que um <code>adm</code> tem acesso.</p>
+        <h4>Body da requisição:</h4>
+        <ul>
+            <li><code>email: string</code></li>
+            <li><code>password: string</code></li>
+        </ul>
+        <p>OBS: email e password referem-se ao <code>adm</code></p>
+        <h4>Resposta:</h4>
+        <p>Uma lista contendo objetos do seguinte formato: <code>id</code> e <code>content</code></p>
+        <p>Exemplo de resposta:</p>
+        <pre><code>[
+          {
+        "id": 1,
+        "content": "novo texto"
+          },
+          {
+        "id": 2,
+        "content": "teste para um texto 2"
+          },
+          {
+        "id": 3,
+        "content": "teste para um texto 3"
+          }
+        ]</code></pre>
+        <h3>3 - <code>/update/content</code></h3>
+        <p>Este endpoint tem como objetivo atualizar um conteúdo específico baseado em um <code>id</code> passado na requisição.</p>
+        <h4>Body da requisição:</h4>
+        <ul>
+            <li><code>id: inteiro</code></li>
+            <li><code>content: string</code></li>
+        </ul>
+        <h4>Resposta:</h4>
+        <p>Nenhuma se tudo der certo, caso aconteça um erro, uma mensagem <code>vazio</code> é retornada, indicando falha.</p>
+        <h3>4 - <code>/content/id</code></h3>
+        <p>Este endpoint retorna um (somente um) conteúdo baseado em seu <code>id</code>.</p>
+        <h4>Body da requisição:</h4>
+        <ul>
+            <li><code>id: inteiro</code></li>
+        </ul>
+        <h4>Resposta:</h4>
+        <p>O texto correspondente ao id passado.</p>
+        <p>Exemplo de resposta:</p>
+        <p><code>novo texto</code></p>
+        <h3>5 - <code>/encrypt/password</code></h3>
+        <p>Este endpoint tem como objetivo criptografar uma senha.</p>
+        <h4>Body da requisição:</h4>
+        <ul>
+            <li><code>password: string</code></li>
+        </ul>
+        <h4>Resposta:</h4>
+        <p>Senha criptografada.</p>
+        <h3>6 - <code>/decrypt/password</code></h3>
+        <p>Este endpoint tem como objetivo descriptografar uma senha.</p>
+        <h4>Body da requisição:</h4>
+        <ul>
+            <li><code>code: string</code></li>
+        </ul>
+        <h4>Resposta:</h4>
+        <p>Senha original.</p>
+    </div>
+</body>
+</html>
