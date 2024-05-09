@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 app.use('/', userController);
 app.get('/', (req, res) => {
 
-  fs.readFile('./index.html', 'utf8', (err, data) => {  
+  fs.readFile('./documentation.html', 'utf8', (err, data) => {  
     res.send(data);
   });
 });
