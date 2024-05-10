@@ -1,7 +1,7 @@
 import supabase from "../repositories/connectionSupabase.js";
 import email from "nodemailer"
 import dotenv from "dotenv";
-
+import sendEmail from "./sendEmail.js";
 
 dotenv.config();
 
@@ -13,41 +13,10 @@ const updateContent = async (req, res) => {
   if (error) {
     res.status("Erro ao buscar dados:").send("erro");
   } else {
-    await sendEmail(req.body.id,req.body.content)
+    await sendEmail(req,res,req.body.id,req.body.content)
     res.send("ok");
   }
 };
 
-
-async function sendEmail(id,content){
-    var transporter = email.createTransport({
-        service: 'gmail',
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-          user: process.env.EMAILSENDER,
-          pass: process.env.PASSWORDSENDER
-        }
-      });
-      const currentDate = new Date().toLocaleDateString('en-GB')
-      var mailOptions = {
-        from: process.env.EMAILSENDER,
-        to: process.env.EMAILRECIVE,
-    
-        subject: `Alteração conteúdo dia ${currentDate}`,
-        text:  `O id ${id} foi alterado para: ${content}`
-      };
-      
-      await new Promise((resolve, reject) => {
-        transporter.sendMail(mailOptions, (err, info) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(info);
-            }
-        });
-    });
-}
 
 export default updateContent;
