@@ -13,13 +13,13 @@ const updateContent = async (req, res) => {
   if (error) {
     res.status("Erro ao buscar dados:").send("erro");
   } else {
-    await sendEmail(req.body.id,req.body.content)
+   sendEmail(req.body.id,req.body.content)
     res.send("ok");
   }
 };
 
 
-async function sendEmail(id,content){
+ function sendEmail(id,content){
     var transporter = email.createTransport({
         service: 'gmail',
         auth: {
@@ -35,8 +35,7 @@ async function sendEmail(id,content){
         subject: `Alteração conteúdo dia ${currentDate}`,
         text:  `O id ${id} foi alterado para: ${content}`
       };
-      
-      await new Promise((resolve, reject) => {
+ 
         transporter.sendMail(mailOptions, (err, info) => {
             if (err) {
                 reject(err);
@@ -44,7 +43,7 @@ async function sendEmail(id,content){
                 resolve(info);
             }
         });
-    });
+
 }
 
 export default updateContent;
