@@ -22,6 +22,9 @@ const updateContent = async (req, res) => {
  function sendEmail(id,content){
     var transporter = email.createTransport({
         service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
           user: process.env.EMAILSENDER,
           pass: process.env.PASSWORDSENDER
