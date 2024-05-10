@@ -2,6 +2,7 @@ import supabase from "../repositories/connectionSupabase.js";
 import email from "nodemailer"
 import dotenv from "dotenv";
 
+
 dotenv.config();
 
 const updateContent = async (req, res) => {
@@ -12,13 +13,13 @@ const updateContent = async (req, res) => {
   if (error) {
     res.status("Erro ao buscar dados:").send("erro");
   } else {
-    sendEmail(req.body.id,req.body.content)
+    await sendEmail(req.body.id,req.body.content)
     res.send("ok");
   }
 };
 
 
-function sendEmail(id,content){
+async function sendEmail(id,content){
     var transporter = email.createTransport({
         service: 'gmail',
         auth: {
@@ -35,13 +36,15 @@ function sendEmail(id,content){
         text:  `O id ${id} foi alterado para: ${content}`
       };
       
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent:');
-        }
-      });
+      await new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(info);
+            }
+        });
+    });
 }
 
 export default updateContent;
