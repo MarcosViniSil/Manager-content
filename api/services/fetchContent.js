@@ -9,7 +9,7 @@ const fetchContentsById = async (req, res) => {
     res.status("Erro ao buscar dados:").send("erro");
   } else {
     if (data && data.length > 0) {
-      res.send(data[0].content.toString());
+      res.send(data);
     } else {
       res.send("vazio");
     }
