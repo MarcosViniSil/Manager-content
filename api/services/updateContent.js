@@ -21,8 +21,10 @@ const updateContent = async (req, res) => {
 
     if (contentError) {
       res.send("Algum erro aconteceu, faça o login novamente");
+    }else{
+      res.send("sucesso!");
     }
-    res.send("ok");
+   
   }
 };
 function generateDate() {
