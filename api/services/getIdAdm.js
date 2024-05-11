@@ -1,6 +1,7 @@
 import supabase from "../repositories/connectionSupabase.js";
 
 const fetchContents = async (req, res) => {
+  
   const { data, error } = await supabase
     .from("adm")
     .select("id")
