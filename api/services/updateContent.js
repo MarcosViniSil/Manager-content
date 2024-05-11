@@ -20,7 +20,7 @@ const updateContent = async (req, res) => {
       .eq("id", req.body.admId);
 
     if (contentError) {
-      console.log("Erro ao buscar dados de conteúdo do usuário");
+      res.send("Algum erro aconteceu, faça o login novamente");
     }
     res.send("ok");
   }
