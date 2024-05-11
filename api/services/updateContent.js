@@ -12,7 +12,11 @@ const updateContent = async (req, res) => {
   if (error) {
     res.status("Erro ao buscar dados:").send("erro");
   } else {
-    await sendEmail(req.body.id, req.body.content);
+    try{
+      await sendEmail(req.body.id, req.body.content);
+    }catch (error) {
+      console.log(error);
+    }
     res.send("ok");
   }
 };
@@ -24,7 +28,7 @@ async function sendEmail(id, content) {
       user: process.env.EMAILSENDER,
       pass: process.env.PASSWORDSENDER,
     },
-    secure: true,
+    secure: false,
   });
 
   await new Promise((resolve, reject) => {
