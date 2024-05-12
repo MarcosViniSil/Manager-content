@@ -1,14 +1,25 @@
-import encryptpwd  from "encrypt-with-password"
+import encryptpwd from "encrypt-with-password";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const decryptPassword = async (req, res) => {
-    const decrypted = encryptpwd.decrypt(req.body.code.toString(), process.env.PASSWORDCRYPTO)
-    const response = {
-        passwordDecrypted: decrypted
+  if (!req.body.code || req.body.code === "") {
+    res.status(400).send("código inválido");
+  } else {
+    try {
+      const decrypted = encryptpwd.decrypt(
+        req.body.code.toString(),
+        process.env.PASSWORDCRYPTO
+      );
+      const response = {
+        passwordDecrypted: decrypted,
+      };
+      res.send(JSON.stringify(response));
+    } catch (e) {
+      res.status(400).send("código inválido");
     }
-    res.send(JSON.stringify(response))
+  }
 };
 
 export default decryptPassword;
