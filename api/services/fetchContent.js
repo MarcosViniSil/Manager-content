@@ -7,7 +7,7 @@ const fetchContentsById = async (req, res) => {
   }else{
   const { data, error } = await supabase
     .from("field")
-    .select("content")
+    .select("content,title")
     .eq("id", req.body.id);
   if (error) {
     res.status("Erro ao buscar dados:").send({message:"erro"});

@@ -28,7 +28,7 @@ const projectsUser = async (req, res) => {
 
       const { data: userContents, error: contentError } = await supabase
         .from("field")
-        .select("id,content")
+        .select("id,content,title")
         .eq("id_adm", userId);
 
       if (contentError) {
