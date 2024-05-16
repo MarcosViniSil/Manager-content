@@ -13,20 +13,19 @@ const fetchContents = async (req, res) => {
   if(req.body.password === "") return res.status(400).send("senha nao pode ser vazia")
 
   const passwordAdm = getPassword(req.body.password)
-  if(passwordAdm === "") return res.status(400).send("Senha inexistente")
+  if(passwordAdm === "") return res.status(400).send({message:"Senha inexistente"})
   const { data, error } = await supabase
     .from("adm")
     .select("id")
     .eq("email", req.body.email)
     .eq("senha", passwordAdm);
   if (error) {
-    res.status("Erro ao buscar dados:").send("erro");
+    res.status("Erro ao buscar dados:").send({message:"erro"});
   } else {
     if (data && data.length > 0) {
-      res.send(data[0].id.toString());
+      res.send({message:data[0].id.toString()});
     } else {
-      console.log(data);
-      res.send("erro");
+      res.send({message:"erro"});
     }
   }
 };

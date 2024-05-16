@@ -16,8 +16,8 @@ describe("Integration tests endpoint /validate/adm", function () {
       password:
         "3392602c45537ffa84373a4b4f175165:5d54c5382f89b9936ebb0685bb94682a",
     });
-    expect(res.header["content-type"]).toBe("text/html; charset=utf-8");
-    expect(res.type).toBe("text/html");
+    expect(res.header["content-type"]).toBe("application/json; charset=utf-8");
+    expect(res.type).toBe("application/json");
     expect(res.statusCode).toBe(200);
   });
 
@@ -26,9 +26,9 @@ describe("Integration tests endpoint /validate/adm", function () {
       password:
         "3392602c45537ffa84373a4b4f175165:5d54c5382f89b9936ebb0685bb94682a",
     });
-    expect(res.header["content-type"]).toBe("text/html; charset=utf-8");
-    expect(res.type).toBe("text/html");
-    expect(res.text).toBe("Email inválido");
+    expect(res.header["content-type"]).toBe("application/json; charset=utf-8");
+    expect(res.type).toBe("application/json");
+    expect(res.text).toBe("{message:Email inválido}");
     expect(res.statusCode).toBe(400);
   });
 
@@ -36,9 +36,9 @@ describe("Integration tests endpoint /validate/adm", function () {
     const res = await request(app).post("/validate/adm").send({
       email: "testeEmail@gmail.com",
     });
-    expect(res.header["content-type"]).toBe("text/html; charset=utf-8");
-    expect(res.type).toBe("text/html");
-    expect(res.text).toBe("senha inválida");
+    expect(res.header["content-type"]).toBe("application/json; charset=utf-8");
+    expect(res.type).toBe("application/json");
+    expect(res.text).toBe("{message:senha inválida}");
     expect(res.statusCode).toBe(400);
   });
 
@@ -48,9 +48,9 @@ describe("Integration tests endpoint /validate/adm", function () {
       password:
         "3392602c45537ffa84373a4b4f175165:5d54c5382f89b9936ebb0685bb94682a",
     });
-    expect(res.header["content-type"]).toBe("text/html; charset=utf-8");
-    expect(res.type).toBe("text/html");
-    expect(res.text).toBe("email deve ser uma string");
+    expect(res.header["content-type"]).toBe("application/json; charset=utf-8");
+    expect(res.type).toBe("application/json");
+    expect(res.text).toBe("{message:email deve ser uma string}");
     expect(res.statusCode).toBe(400);
   });
 
@@ -59,9 +59,9 @@ describe("Integration tests endpoint /validate/adm", function () {
       email: "testeEmail@gmail.com",
       password: 12,
     });
-    expect(res.header["content-type"]).toBe("text/html; charset=utf-8");
-    expect(res.type).toBe("text/html");
-    expect(res.text).toBe("senha deve ser uma string");
+    expect(res.header["content-type"]).toBe("application/json; charset=utf-8");
+    expect(res.type).toBe("application/json");
+    expect(res.text).toBe("{message:senha deve ser uma string}");
     expect(res.statusCode).toBe(400);
   });
 
@@ -71,9 +71,9 @@ describe("Integration tests endpoint /validate/adm", function () {
       password:
         "3392602c45537ffa84373a4b4f175165:5d54c5382f89b9936ebb0685bb94682a",
     });
-    expect(res.header["content-type"]).toBe("text/html; charset=utf-8");
-    expect(res.type).toBe("text/html");
-    expect(res.text).toBe("Email inválido");
+    expect(res.header["content-type"]).toBe("application/json; charset=utf-8");
+    expect(res.type).toBe("application/json");
+    expect(res.text).toBe("{message:Email inválido}");
     expect(res.statusCode).toBe(400);
   });
 
@@ -82,9 +82,9 @@ describe("Integration tests endpoint /validate/adm", function () {
       email: "testeEmail@gmail.com",
       password: "",
     });
-    expect(res.header["content-type"]).toBe("text/html; charset=utf-8");
-    expect(res.type).toBe("text/html");
-    expect(res.text).toBe("senha inválida");
+    expect(res.header["content-type"]).toBe("application/json; charset=utf-8");
+    expect(res.type).toBe("application/json");
+    expect(res.text).toBe("{message:senha inválida}");
     expect(res.statusCode).toBe(400);
   });
 
@@ -93,9 +93,9 @@ describe("Integration tests endpoint /validate/adm", function () {
       email: "testeEmail@gmail.com",
       password: "wrong password",
     });
-    expect(res.header["content-type"]).toBe("text/html; charset=utf-8");
-    expect(res.type).toBe("text/html");
-    expect(res.text).toBe("Senha inexistente");
+    expect(res.header["content-type"]).toBe("application/json; charset=utf-8");
+    expect(res.type).toBe("application/json");
+    expect(res.text).toBe("{message:Senha inexistente}");
     expect(res.statusCode).toBe(400);
   });
 

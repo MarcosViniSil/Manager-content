@@ -42,9 +42,9 @@ const updateContent = async (req, res) => {
       .eq("id", req.body.admId);
 
     if (contentError) {
-      res.send("Algum erro aconteceu, faça o login novamente");
+      res.send({message:"Algum erro aconteceu, faça o login novamente"});
     }else{
-      res.send("sucesso");
+      res.send({message:"sucesso"});
     }
    
   }

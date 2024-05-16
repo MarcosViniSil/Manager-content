@@ -21,7 +21,7 @@ describe('Integration tests endpoint /content/id', function () {
         const res = await request(app).post('/content/id').send({id:-1});
         expect(res.header['content-type']).toBe('text/html; charset=utf-8');
         expect(res.type).toBe("text/html")
-        expect(res.text).toBe("dado inexistente")
+        expect(res.text.message).toBe("dado inexistente")
         expect(res.statusCode).toBe(400);
       });
 
@@ -29,7 +29,7 @@ describe('Integration tests endpoint /content/id', function () {
         const res = await request(app).post('/content/id').send({id:"string"});
         expect(res.header['content-type']).toBe('text/html; charset=utf-8');
         expect(res.type).toBe("text/html")
-        expect(res.text).toBe("o id deve ser um numero inteiro")
+        expect(res.text.message).toBe("o id deve ser um numero inteiro")
         expect(res.statusCode).toBe(400);
       });
   

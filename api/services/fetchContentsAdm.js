@@ -13,7 +13,7 @@ const projectsUser = async (req, res) => {
   if(req.body.password === "") return res.status(400).send("senha nao pode ser vazia")
   try {
     const passwordAdm = getPassword(req.body.password)
-    if(passwordAdm === "") return res.status(400).send("Senha inexistente")
+    if(passwordAdm === "") return res.status(400).send({message:"Senha inexistente"})
     const { data: userData, error: userError } = await supabase
       .from("adm")
       .select("id")
@@ -39,14 +39,14 @@ const projectsUser = async (req, res) => {
         const sortedContents = userContents.sort((a, b) => a.id - b.id);
         res.send(sortedContents);
       } else {
-        res.send("Nenhum conteúdo encontrado para este usuário");
+        res.send({message:"Nenhum conteúdo encontrado para este usuário"});
       }
     } else {
       res.send("Usuário não encontrado");
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send("Ocorreu um erro ao processar a solicitação");
+    res.status(500).send({message:"Ocorreu um erro ao processar a solicitação"});
   }
 
 };

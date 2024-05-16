@@ -32,7 +32,7 @@ describe("Integration tests endpoint /contents/adm", function () {
        });
     expect(res.header["content-type"]).toBe("text/html; charset=utf-8")
     expect(res.type).toBe("text/html")
-    expect(res.text).toBe("Email inválido")
+    expect(res.text.message).toBe("Email inválido")
     expect(res.statusCode).toBe(400);
   });
 
@@ -45,7 +45,7 @@ describe("Integration tests endpoint /contents/adm", function () {
        });
     expect(res.header["content-type"]).toBe("text/html; charset=utf-8")
     expect(res.type).toBe("text/html")
-    expect(res.text).toBe("senha inválida")
+    expect(res.text.message).toBe("senha inválida")
     expect(res.statusCode).toBe(400);
   });
 
@@ -59,7 +59,7 @@ describe("Integration tests endpoint /contents/adm", function () {
        });
     expect(res.header["content-type"]).toBe("text/html; charset=utf-8")
     expect(res.type).toBe("text/html")
-    expect(res.text).toBe("senha deve ser uma string")
+    expect(res.text.message).toBe("senha deve ser uma string")
     expect(res.statusCode).toBe(400);
   });
 
@@ -73,7 +73,7 @@ describe("Integration tests endpoint /contents/adm", function () {
        });
     expect(res.header["content-type"]).toBe("text/html; charset=utf-8")
     expect(res.type).toBe("text/html")
-    expect(res.text).toBe("email deve ser uma string")
+    expect(res.text.message).toBe("email deve ser uma string")
     expect(res.statusCode).toBe(400);
   });
 
@@ -87,7 +87,7 @@ describe("Integration tests endpoint /contents/adm", function () {
        });
     expect(res.header["content-type"]).toBe("text/html; charset=utf-8")
     expect(res.type).toBe("text/html")
-    expect(res.text).toBe("Email inválido")
+    expect(res.text.message).toBe("Email inválido")
     expect(res.statusCode).toBe(400);
   });
 
@@ -101,7 +101,7 @@ describe("Integration tests endpoint /contents/adm", function () {
        });
     expect(res.header["content-type"]).toBe("text/html; charset=utf-8")
     expect(res.type).toBe("text/html")
-    expect(res.text).toBe("senha inválida")
+    expect(res.text.message).toBe("senha inválida")
     expect(res.statusCode).toBe(400);
   });
 
@@ -115,7 +115,7 @@ describe("Integration tests endpoint /contents/adm", function () {
        });
     expect(res.header["content-type"]).toBe("text/html; charset=utf-8")
     expect(res.type).toBe("text/html")
-    expect(res.text).toBe("Senha inexistente")
+    expect(res.text.message).toBe("Senha inexistente")
     expect(res.statusCode).toBe(400);
   });
 
