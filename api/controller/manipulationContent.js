@@ -5,6 +5,8 @@ import updateContent from "../services/updateContent.js";
 import fetchContent from "../services/fetchContent.js";
 import crypt from "../services/encryptPassword.js"
 import decrypt from "../services/decryptPassword.js"
+import getDateUpdate from "../services/getDateUpdate.js"
+
 const router = express.Router();
 
 router.use(express.json());
@@ -15,4 +17,5 @@ router.post('/update/content', updateContent);
 router.post('/content/id', fetchContent);
 router.post('/encrypt/password', crypt);
 router.post('/decrypt/password', decrypt);
+router.get('/date/update/:id', getDateUpdate);
 export default router;
