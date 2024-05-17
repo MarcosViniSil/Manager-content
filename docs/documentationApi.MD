@@ -7,7 +7,8 @@
  - 4 - `/content/id`
  - 5 - `/encrypt/password`
  - 6 - `/decrypt/password`
-## OBS: todos os endpoints são do tipo `POST`
+ - 7 - `/date/update/:id`
+## OBS: todos os endpoints são do tipo `POST`, exceto `/date/update/:id` que é do tipo `get`
 ## Explicação de cada endpoint:
 ## 1 - `/validate/adm`
 ### Este endpoint tem como objetivo validar um determinado administrador (`adm`), aquele que pode alterar o contéudo das páginas.
@@ -68,7 +69,7 @@
 ### Exemplo de resposta
 - ### `novo texto`
 
-## 4 - `/encrypt/password`
+## 5 - `/encrypt/password`
 ### Este endpoint tem como objetivo criptografar uma senha
 
 ### Body da requisição:
@@ -77,7 +78,7 @@
 ### Resposta:
 - ### senha cryptografada
 
-## 4 - `/decrypt/password`
+## 6 - `/decrypt/password`
 ### Este endpoint tem como objetivo descriptografar uma senha
 
 ### Body da requisição:
@@ -85,4 +86,13 @@
 
 ### Resposta:
 - ### senha original
+
+## 7 - `/date/update/:id`
+### Este endpoint tem como objetivo retornar a data da utima atualização de um adm
+
+### parâmetro da requisição:
+- ### id: inteiro
+
+### Resposta:
+- ### data da última atualização
 
