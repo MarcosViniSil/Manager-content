@@ -40,13 +40,13 @@ const admAble = async (req, res) => {
        
         res.status(200).send({message:"autorizado"});
       } else {
-        res.status(400).send({message:"negado"});
+        res.status(400).send({message:"Aconteceu um erro, tente novamente"});
       }
     } else {
-        res.status(400).send({message:"usuario invalido"});
+        res.status(400).send({message:"Usuário inválido"});
     }
   } catch (error) {
-    res.status(400).send({message:"erro"});
+    res.status(400).send({message:"Aconteceu um erro, tente novamente"});
   }
 
 };
